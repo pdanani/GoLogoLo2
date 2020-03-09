@@ -3,7 +3,7 @@ import React from 'react'
 class Navbar extends React.Component {
   constructor() {
     super();
-
+    console.log("lol");
     console.log("Navbar constructed");
   }
 
