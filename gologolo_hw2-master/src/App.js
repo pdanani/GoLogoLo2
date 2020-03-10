@@ -23,6 +23,8 @@ export const TransactionType = {
 export const LogoDefaults = {
   TEXT : "goLogoLo Logo",
   TEXT_COLOR : "#FF0000",
+  BACKGROUND_COLOR:"#FF0000",
+  BORDER_COLOR:"#FF0000",
   FONT_SIZE : 24
 }
 
@@ -145,13 +147,15 @@ class App extends Component {
    * to do the actual work of changing the logo. Note that this function will also
    * then add the built transaction to the stack and execute it.
    */
-  buildChangeLogoTransaction = (oldLogo, logoKey, newText, newTextColor, newFontSize) => {
+  buildChangeLogoTransaction = (oldLogo, logoKey, newText, newTextColor,newBackgroundColor,newBorderColor, newFontSize) => {
     // THIS WILL BE THE LOGO AFTER THE CHANGE HAPPENS, NOTE WE BUILD
     // AN ENTIRELY NEW LOGO EACH TIME BUT IT SHOULD KEEP THE SAME KEY
     let postEditLogo = {
       key: logoKey,
       text: newText,
       textColor: newTextColor,
+      backgroundColor:newBackgroundColor,
+      borderColor: newBorderColor,
       fontSize: newFontSize
     };
 
@@ -221,6 +225,8 @@ class App extends Component {
       key: this.getHighKey(this.state.logos),
       text: LogoDefaults.TEXT,
       textColor: LogoDefaults.TEXT_COLOR,
+      backgroundColor:LogoDefaults.BACKGROUND_COLOR,
+      borderColor: LogoDefaults.BORDER_COLOR,
       fontSize: LogoDefaults.FONT_SIZE
     }
     return newLogo;
@@ -306,6 +312,8 @@ class App extends Component {
     text += "{\n";
     text += "\ttext: " + logoToDisplay.text + "\n";
     text += "\ttextColor: " + logoToDisplay.textColor + "\n";
+    text+="\tbackgroundColor"+logoToDisplay.backgroundColor+ "\n"
+    text+="\tborderColor"+logoToDisplay.borderColor+"\n"
     text += "\tfontSize: " + logoToDisplay.fontSize + "\n";
     text += "}";
     return text;
@@ -345,7 +353,8 @@ class App extends Component {
           goToHomeCallback={this.goToHomeScreen}                    // NAVIGATION CALLBACK
           changeLogoCallback={this.buildChangeLogoTransaction}  // TRANSACTION CALLBACK
           undoCallback={this.undo}                        // TRANSACTION CALLBACK                       
-          canUndo={this.canUndo}                          // TRANSACTION CALLBACK
+          canUndo={this.canUndo}  
+                                  // TRANSACTION CALLBACK
 
         />;
       default:

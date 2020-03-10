@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Modal from '/Users/pawan/Desktop/CSE316/HW2/gologolo_hw2-master/src/Modal.js'
 
 class TextEditSidebar extends Component {
     constructor() {
@@ -8,9 +9,18 @@ class TextEditSidebar extends Component {
         // VALUES HERE
         this.state = {
             textColor : "#FF0000",
-            fontSize : 24
+            fontSize : 24,
+            backgroundColor: '#FF0000',
+            borderColor:"#FF0000"
+
         }
     }
+    toggleModal = () => {
+        this.setState({
+           showModal: ! this.state.showModal
+        })
+     };
+    
 
     handleUndo = () => {
         this.props.undoCallback();
@@ -25,14 +35,21 @@ class TextEditSidebar extends Component {
         console.log("handleTextColorChangeComplete to " + event.target.value);
         this.setState({ fontSize: event.target.value }, this.completeUserEditing);
     }
+    handleBackgroundColorChange = (event) => {//mine
+        this.setState({ backgroundColor: event.target.value }, this.completeUserEditing);
+    }
+    handleBorderColorChange = (event) => {//mine
+        this.setState({ borderColor: event.target.value }, this.completeUserEditing);
+    }
 
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize);
+        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor,this.state.backgroundColor,this.state.borderColor ,this.state.fontSize);
     }
 
     render() {
+        const { showModal } = this.state;
         let undoDisabled = !this.props.canUndo();
         let undoClass = "waves-effect waves-light btn-small";
         if (undoDisabled)
@@ -41,7 +58,8 @@ class TextEditSidebar extends Component {
             <div className="card-panel col s4">
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
-                        <button className="waves-effect waves-light btn-small">&#9998;</button>
+                        <button className="waves-effect waves-light btn-small" onClick={this.toggleModal}
+                        >&#9998;</button> 
                         <button className={undoClass} onClick={this.handleUndo}>Undo</button>
                     </div>
                 </div>
@@ -49,11 +67,29 @@ class TextEditSidebar extends Component {
                     <div className="card-content white-text">
                         <span className="card-title">Text</span>
                         <div className="row">
-                            <div className="col s4">Color:</div>
+                            <div className="col s4">Text Color:</div>
                             <div className="col s8">
                                 <input type="color"
                                         onChange={this.handleTextColorChange}
                                         value={this.props.logo.textColor}
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s4">Background Color:</div>
+                            <div className="col s8">
+                                <input type="color"
+                                        onChange={this.handleBackgroundColorChange}
+                                        value={this.props.logo.backgroundColor}
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s4">Border Color:</div>
+                            <div className="col s8">
+                                <input type="color"
+                                        onChange={this.handleBorderColorChange}
+                                        value={this.props.logo.borderColor}
                                 />
                             </div>
                         </div>
@@ -67,6 +103,7 @@ class TextEditSidebar extends Component {
                         </div>
                     </div>
                 </div>
+               
             </div>
         )
     }
