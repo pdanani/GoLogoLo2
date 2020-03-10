@@ -27,9 +27,19 @@ body {
   border-width: 2px;
   border-style: solid;
   border-radius: 10px;
-  padding-left: 10%;
+  padding-left: 30%;
   padding-top: 5%;
   padding-bottom: 5%;
+}
+#createButton{
+  border-style: solid;
+  border-radius: 2px;
+  font-size:20pt;
+  padding:20px;
+  border-style:  solid;
+  border-radius: 20px;
+  margin-top:40px;
+  margin-left: 250px;
 }
 
 

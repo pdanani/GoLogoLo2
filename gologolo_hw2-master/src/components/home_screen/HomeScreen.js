@@ -40,9 +40,10 @@ class HomeScreen extends Component {
                         GoLogoLo<br />
                         Logo Maker
                     </div>
-                    <div>
-                        <button
-                            style={{ cursor: "pointer" }}
+                    <div>   
+                        <button id= "createButton"
+                            style={{ cursor: "pointer"
+                                         }}
                             onClick={this.handleAddNewLogo}>
                             Create a New Logo
                         </button>

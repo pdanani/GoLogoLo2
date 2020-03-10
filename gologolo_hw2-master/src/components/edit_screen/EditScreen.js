@@ -14,7 +14,7 @@ export class EditScreen extends Component {
         this.state = { 
              
             deleteModalVisible: false
-            
+                
         }
 
         
