@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 export class LogoLink extends Component {
     constructor(props) {
         super(props);
+        
 
         // DISPLAY WHERE WE ARE
         console.log("\t\t\tLogoLink " + this.props.logo.key + " constructor");

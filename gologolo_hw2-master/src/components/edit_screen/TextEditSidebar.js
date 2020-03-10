@@ -2,18 +2,18 @@ import React, { Component } from 'react'
 import Modal from '/Users/pawan/Desktop/CSE316/HW2/gologolo_hw2-master/src/Modal.js'
 
 class TextEditSidebar extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         // WE'LL MANAGE THE UI CONTROL
         // VALUES HERE
-        this.state = {
-            textColor : "#FF0000",
-            fontSize : 24,
-            backgroundColor: '#FF0000',
-            borderColor:"#FF0000"
+         this.state = {
+            textColor : this.props.logo.textColor,
+            fontSize : this.props.logo.fontSize,
+            backgroundColor: this.props.logo.backgroundColor,
+            borderColor:this.props.logo.borderColor
 
-        }
+        } 
     }
     toggleModal = () => {
         this.setState({
@@ -49,7 +49,6 @@ class TextEditSidebar extends Component {
     }
 
     render() {
-        const { showModal } = this.state;
         let undoDisabled = !this.props.canUndo();
         let undoClass = "waves-effect waves-light btn-small";
         if (undoDisabled)

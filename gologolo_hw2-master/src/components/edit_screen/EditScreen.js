@@ -11,9 +11,13 @@ export class EditScreen extends Component {
         // DISPLAY WHERE WE ARE
         console.log("\tEditScreen constructor");
 
-        this.state = {  
+        this.state = { 
+             
             deleteModalVisible: false
+            
         }
+
+        
     }
 
     componentDidMount = () => {
@@ -28,7 +32,7 @@ export class EditScreen extends Component {
         // DISPLAY WHERE WE ARE
         console.log("\tEditScreen render");
         return (
-            <div className="container">
+            <div className=" ">
                 <Navbar goToHomeCallback={this.props.goToHomeCallback} />
                 <div className="row">
                     <TextEditSidebar
