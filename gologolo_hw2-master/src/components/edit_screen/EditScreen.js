@@ -32,7 +32,7 @@ export class EditScreen extends Component {
         // DISPLAY WHERE WE ARE
         console.log("\tEditScreen render");
         return (
-            <div className=" ">
+            <div className="    ">
                 <Navbar goToHomeCallback={this.props.goToHomeCallback} />
                 <div className="row">
                     <TextEditSidebar

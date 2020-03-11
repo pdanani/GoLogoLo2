@@ -41,5 +41,10 @@ body {
   margin-top:40px;
   margin-left: 250px;
 }
-
-
+#help{
+  max-width: 550px;
+  border-style: 'solid';
+  border:'solid';
+  display:'block-inline'; 
+  
+}

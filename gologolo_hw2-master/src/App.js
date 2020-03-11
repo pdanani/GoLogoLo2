@@ -25,7 +25,11 @@ export const LogoDefaults = {
   TEXT_COLOR : "#abedd9",
   BACKGROUND_COLOR:"#abb3ed",
   BORDER_COLOR:"#bcc1cc",
-  FONT_SIZE : 24
+  FONT_SIZE : 24,
+  BORDER_RADIUS: 20,
+  BORDER_THICKNESS:15,
+  PADDING: 0,
+  MARGIN: 15
 }
 
 // App IS THE ROOT REACT COMPONENT
@@ -147,7 +151,7 @@ class App extends Component {
    * to do the actual work of changing the logo. Note that this function will also
    * then add the built transaction to the stack and execute it.
    */
-  buildChangeLogoTransaction = (oldLogo, logoKey, newText, newTextColor,newBackgroundColor,newBorderColor, newFontSize) => {
+  buildChangeLogoTransaction = (oldLogo, logoKey, newText, newTextColor,newBackgroundColor,newBorderColor, newFontSize,newBorderRadius,newBorderWidth,newPadding,newMargin) => {
     // THIS WILL BE THE LOGO AFTER THE CHANGE HAPPENS, NOTE WE BUILD
     // AN ENTIRELY NEW LOGO EACH TIME BUT IT SHOULD KEEP THE SAME KEY
     let postEditLogo = {
@@ -156,7 +160,11 @@ class App extends Component {
       textColor: newTextColor,
       backgroundColor:newBackgroundColor,
       borderColor: newBorderColor,
-      fontSize: newFontSize
+      fontSize: newFontSize,
+      borderRadius:newBorderRadius,
+      borderwidth:newBorderWidth,
+      padding:newPadding,
+      margin:newMargin
     };
 
     // NOW BUILD THE TRANSACTION OBJECT
@@ -227,7 +235,11 @@ class App extends Component {
       textColor: LogoDefaults.TEXT_COLOR,
       backgroundColor:LogoDefaults.BACKGROUND_COLOR,
       borderColor: LogoDefaults.BORDER_COLOR,
-      fontSize: LogoDefaults.FONT_SIZE
+      fontSize: LogoDefaults.FONT_SIZE,
+      borderRadius:LogoDefaults.BORDER_RADIUS,
+      borderwidth:LogoDefaults.BORDER_THICKNESS,
+      padding:LogoDefaults.PADDING,
+      margin:LogoDefaults.MARGIN
     }
     return newLogo;
   }
@@ -315,6 +327,11 @@ class App extends Component {
     text+="\tbackgroundColor"+logoToDisplay.backgroundColor+ "\n"
     text+="\tborderColor"+logoToDisplay.borderColor+"\n"
     text += "\tfontSize: " + logoToDisplay.fontSize + "\n";
+    text += "\tborderRadius: " + logoToDisplay.borderRadius + "\n";
+    text += "\tborderwidth: " + logoToDisplay.borderwidth + "\n";
+    text += "\tpadding: " + logoToDisplay.padding + "\n";
+    text += "\tmargin: " + logoToDisplay.margin + "\n";
+
     text += "}";
     return text;
   }
