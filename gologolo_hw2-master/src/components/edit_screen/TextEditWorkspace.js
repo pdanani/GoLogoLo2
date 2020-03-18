@@ -9,13 +9,14 @@ class TextEditWorkspace extends Component {
             container: {
                 color: this.props.logo.textColor,
                 backgroundColor: this.props.logo.backgroundColor,
+                border:'solid',
+
                 borderColor: this.props.logo.borderColor,
                 fontSize: this.props.logo.fontSize + "pt",
                 borderRadius:this.props.logo.borderRadius+"pt",
-                borderwidth:this.props.logo.borderwidth+"pts",
+                borderWidth:this.props.logo.borderWidth+"pt",
                 padding: this.props.logo.padding+"pt",  
                 margin:this.props.logo.margin+"pt"   ,     
-                border:'solid',
                 display:'block-inline'
 
                 
@@ -29,6 +30,8 @@ class TextEditWorkspace extends Component {
                 style={ styles.container }>
 
                 {this.props.logo.text}
+
+                
             </div>
         )
     }

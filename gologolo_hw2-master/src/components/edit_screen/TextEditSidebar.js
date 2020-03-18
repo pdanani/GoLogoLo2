@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
-import Modal from '/Users/pawan/Desktop/CSE316/HW2/gologolo_hw2-master/src/Modal.js'
+
+
+import Modal from '/Users/pawan/Desktop/CSE316/HW2/gologolo_hw2-master/src/Modal.js';
 
 class TextEditSidebar extends Component {
+              isShowing: false
+
+ 
+
     constructor(props) {
         super(props);
 
@@ -14,20 +20,28 @@ class TextEditSidebar extends Component {
             backgroundColor: this.props.logo.backgroundColor,
             borderColor:this.props.logo.borderColor,
             borderRadius:this.props.logo.borderRadius,
-            borderwidth:this.props.logo.borderwidth,
+            borderWidth:this.props.logo.borderWidth,
             padding:this.props.logo.padding,
             margin:this.props.logo.margin,
-            
+            isShowing: false
+
+
        
 
         } 
     }
-    toggleModal = () => {
+    openModalHandler = () => {
         this.setState({
-           showModal: ! this.state.showModal
-        })
-     };
-    
+            isShowing: true
+        });
+    }
+
+    closeModalHandler = () => {
+        this.setState({
+            isShowing: false
+        });
+    }
+
 
     handleUndo = () => {
         this.props.undoCallback();
@@ -53,7 +67,7 @@ class TextEditSidebar extends Component {
     }
     handleBorderWidthChange = (event) => {//mine
         console.debug("width");
-        this.setState({ borderwidth: event.target.value }, this.completeUserEditing);
+        this.setState({ borderWidth: event.target.value }, this.completeUserEditing);
     }
     handlePaddingChange = (event) => {//mine
         this.setState({ padding: event.target.value }, this.completeUserEditing);
@@ -65,20 +79,27 @@ class TextEditSidebar extends Component {
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor,this.state.backgroundColor,this.state.borderColor ,this.state.fontSize,this.state.borderRadius,this.state.borderwidth,this.state.padding,this.state.margin);
+        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor,this.state.backgroundColor,this.state.borderColor ,this.state.fontSize,this.state.borderRadius,this.state.borderWidth,this.state.padding,this.state.margin);
     }
-
+     updateTextInput=(val)=> {
+        document.getElementById('textInput').value=val; 
+      }
     render() {
+
         let undoDisabled = !this.props.canUndo();
         let undoClass = "waves-effect waves-light btn-small";
         if (undoDisabled)
             undoClass += " disabled";
         return (
+            
             <div className="card-panel col s4">
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
-                        <button className="waves-effect waves-light btn-small" onClick={this.toggleModal}
+                        <button className="waves-effect waves-light btn-small" onClick={this.openModalHandler}
                         >&#9998;</button> 
+                                      
+
+                        
                         <button className={undoClass} onClick={this.handleUndo}>Undo</button>
                     </div>
                 </div>
@@ -132,7 +153,7 @@ class TextEditSidebar extends Component {
                             <div className="col s8">
                                 <input type="range" min="4" max="144" 
                                     onChange={this.handleBorderWidthChange}
-                                    value={this.props.logo.borderwidth} />
+                                    value={this.props.logo.borderWidth} />
                             </div>
                         </div><div className="row">
                             <div className="col s4">Padding:</div>
@@ -151,7 +172,13 @@ class TextEditSidebar extends Component {
                         </div>
                     </div>
                 </div>
-               
+                { this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }
+
+<Modal
+className="modal"
+show={this.state.isShowing}
+close={this.closeModalHandler}>
+</Modal>
             </div>
         )
     }

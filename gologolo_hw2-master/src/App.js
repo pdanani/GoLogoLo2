@@ -162,7 +162,7 @@ class App extends Component {
       borderColor: newBorderColor,
       fontSize: newFontSize,
       borderRadius:newBorderRadius,
-      borderwidth:newBorderWidth,
+      borderWidth:newBorderWidth,
       padding:newPadding,
       margin:newMargin
     };
@@ -328,7 +328,7 @@ class App extends Component {
     text+="\tborderColor"+logoToDisplay.borderColor+"\n"
     text += "\tfontSize: " + logoToDisplay.fontSize + "\n";
     text += "\tborderRadius: " + logoToDisplay.borderRadius + "\n";
-    text += "\tborderwidth: " + logoToDisplay.borderwidth + "\n";
+    text += "\tborderwidth: " + logoToDisplay.borderWidth + "\n";
     text += "\tpadding: " + logoToDisplay.padding + "\n";
     text += "\tmargin: " + logoToDisplay.margin + "\n";
 
