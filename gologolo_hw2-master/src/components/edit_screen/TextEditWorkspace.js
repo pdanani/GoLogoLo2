@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { AutoInit } from 'materialize-css'
+import TextEditSidebar from './TextEditSidebar'
 
 // THIS IS HOW WE DISPLAY THE LOGO, IN THIS COMPONENT
 class TextEditWorkspace extends Component {
@@ -7,6 +8,7 @@ class TextEditWorkspace extends Component {
         const styles = {
             
             container: {
+
                 color: this.props.logo.textColor,
                 backgroundColor: this.props.logo.backgroundColor,
                 border:'solid',
@@ -28,8 +30,8 @@ class TextEditWorkspace extends Component {
         return (
             <div id="help" className="col s8"
                 style={ styles.container }>
-
                 {this.props.logo.text}
+
 
                 
             </div>

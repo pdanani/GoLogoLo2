@@ -1,26 +1,25 @@
 import React from 'react';
 
 
-const modal = (props) => {
+const modal=(props) =>{
     return (
         <div>
-            <div className="modal-wrapper"
+            <div className="modal-ting"
                 style={{
-                    transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
                     opacity: props.show ? '1' : '0'
                 }}>
-                <div className="modal-header">
-                    <h3>Edit Text</h3>
-                    <span className="close-modal-btn" onClick={props.close}>×</span>
+                <div className="mdl-hdr">
+                    <p>Edit Text</p>
                 </div>
-                <div className="modal-body">
+                <div className="mdl-body">
                     <p>
-                        {props.children}
+                    <input type="text-input" id="txtbox" onChange={props.textChange}/>
                     </p>
                 </div>
-                <div className="modal-footer">
-                    <button className="btn-cancel" onClick={props.close}>CLOSE</button>
-                    <button className="btn-continue">CONTINUE</button>
+                <div className="mdl-ftr">
+                    <button className="btn-cancel" onClick={props.close}>Close</button>
+                    <button className="btn-enter" onClick={props.enter}
+                        >Enter</button>
                 </div>
             </div>
         </div>

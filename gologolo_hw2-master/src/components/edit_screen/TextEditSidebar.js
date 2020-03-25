@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-
+import range from 'react'
 import Modal from '/Users/pawan/Desktop/CSE316/HW2/gologolo_hw2-master/src/Modal.js';
+import TextEditWorkspace from './TextEditWorkspace';
 
 class TextEditSidebar extends Component {
-              isShowing: false
 
  
 
@@ -14,7 +14,6 @@ class TextEditSidebar extends Component {
         // WE'LL MANAGE THE UI CONTROL
         // VALUES HERE
          this.state = {
-             
             textColor : this.props.logo.textColor,
             fontSize : this.props.logo.fontSize,
             backgroundColor: this.props.logo.backgroundColor,
@@ -23,25 +22,37 @@ class TextEditSidebar extends Component {
             borderWidth:this.props.logo.borderWidth,
             padding:this.props.logo.padding,
             margin:this.props.logo.margin,
-            isShowing: false
+            shows: false
 
 
        
 
         } 
     }
+
+    handleTempChange=(event)=>{
+        this.setState({ text: event.target.value });
+
+
+
+    }
+    handleTextChange=()=>{
+       this.completeUserEditing();
+
+
+    }
     openModalHandler = () => {
         this.setState({
-            isShowing: true
+            shows: true
         });
     }
 
     closeModalHandler = () => {
         this.setState({
-            isShowing: false
+            shows: false
         });
     }
-
+    
 
     handleUndo = () => {
         this.props.undoCallback();
@@ -76,7 +87,7 @@ class TextEditSidebar extends Component {
         this.setState({ margin: event.target.value }, this.completeUserEditing);
     }
 
-    completeUserEditing = () => {
+        completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
         this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor,this.state.backgroundColor,this.state.borderColor ,this.state.fontSize,this.state.borderRadius,this.state.borderWidth,this.state.padding,this.state.margin);
@@ -125,7 +136,7 @@ class TextEditSidebar extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col s4">Border Color:</div>
+                            <div className="col s4">Border Color:</div> 
                             <div className="col s8">
                                 <input type="color"
                                         onChange={this.handleBorderColorChange}
@@ -134,11 +145,18 @@ class TextEditSidebar extends Component {
                             </div>
                         </div>
                         <div className="row">
+
                             <div className="col s4">Font Size:</div>
+
                             <div className="col s8">
-                                <input type="range" min="4" max="80" 
-                                    onChange={this.handleFontSizeChange}
-                                    value={this.props.logo.fontSize} />
+
+                                <input type="range" min="4" max="80"  name="fonty"
+                                  
+                                  onChange={this.handleFontSizeChange}
+                                    value={this.props.logo.fontSize} 
+                                    />
+
+
                             </div>
                         </div>
                         <div className="row">
@@ -172,13 +190,15 @@ class TextEditSidebar extends Component {
                         </div>
                     </div>
                 </div>
-                { this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }
+                { this.state.shows ? <div onClick={this.closeModalHandler}></div> : null }
 
 <Modal
 className="modal"
-show={this.state.isShowing}
-close={this.closeModalHandler}>
-</Modal>
+show={this.state.shows}
+textChange={this.handleTempChange}
+close={this.closeModalHandler}
+enter={this.handleTextChange}>
+</Modal >
             </div>
         )
     }

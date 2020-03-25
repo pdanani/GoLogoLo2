@@ -19,6 +19,7 @@ export class EditScreen extends Component {
         }
 
         
+        
     }
 
     componentDidMount = () => {
@@ -35,7 +36,11 @@ export class EditScreen extends Component {
         return (
             <div className="    ">
                  
-                <Navbar goToHomeCallback={this.props.goToHomeCallback} />
+                <Navbar 
+                logo={this.props.logo}
+                goToHomeCallback={this.props.goToHomeCallback}
+                        deleteLogoCallback={this.props.deleteLogoCallback}
+                />
                 <div className="row">
                     <TextEditSidebar
                         logo={this.props.logo}
@@ -44,7 +49,9 @@ export class EditScreen extends Component {
                         canUndo={this.props.canUndo}                         
                     />
                     <TextEditWorkspace
-                        logo={this.props.logo} />
+                        logo={this.props.logo}
+                        />
+                        
                 </div>
                 
             </div>

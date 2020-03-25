@@ -366,8 +366,12 @@ class App extends Component {
         />;
       case AppScreen.EDIT_SCREEN:
         return <EditScreen
-          logo={this.state.currentLogo}                         // DATA NEEDED BY THIS COMPONENT AND ITS DESCENDANTS
-          goToHomeCallback={this.goToHomeScreen}                    // NAVIGATION CALLBACK
+           logo={this.state.currentLogo}                         // DATA NEEDED BY THIS COMPONENT AND ITS DESCENDANTS
+
+          goToHomeCallback={this.goToHomeScreen}  
+          deleteLogoCallback={this.deleteLogo}//Delete!!!
+          // NAVIGATION CALLBACK
+
           changeLogoCallback={this.buildChangeLogoTransaction}  // TRANSACTION CALLBACK
           undoCallback={this.undo}                        // TRANSACTION CALLBACK                       
           canUndo={this.canUndo}  

@@ -48,75 +48,54 @@ body {
   display:'block-inline'; 
   
 }
-.modal-wrapper {
+.modal-ting {
   background: white;
-  border: 1px solid #d0cccc;
-  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
-  margin: 100px auto 0;
-  transition: all .8s;
+  border: 1px solid #d0ddcc;
   width: 60%;
 }
 
-.modal-header {
-  background: #171d20;
-  height: 40px;
-  line-height: 40px;
-  padding: 5px 20px;
+.mdl-hdr {
+  background: #171d21;
   text-align: center;
+
+  height: 38px;
+  padding: 3px 18px;
   margin:1px
 }
 
-.modal-header h3 {
-  color: white;
-  float: left;
-  font-size:30px;
+.mdl-hdr p{
   margin: 0;
   padding: 0;
+  color: white;
+  float: left;
+  font-size:31px;
+ 
 }
 
-.modal-body {
-  padding: 10px 15px;
+.mdl-bdy {
+  padding: 21px 15px;
+  
   text-align: center;
 }
 
-.modal-footer {
-  background: #171d20;
+.mdl-ftr {
+  background: #171d21;
   height: 35px;
   padding: 15px;
 }
 
 
-.btn-cancel, .btn-continue {
-  background: coral;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  outline: none;
+.btn-cancel {
+  background-color: #af1c1c;
+  float: left;
   padding: 1px;
   margin:-6px;
 }
 
-.btn-cancel {
-  background-color: #b71c1c;
-  float: left;
-}
-
-.btn-continue {
-  background-color: #1b5e20;
+.btn-enter {
+  background-color: #237529;
   float: right;
+  padding: 1px;
+  margin:-6px;
 }
 
-.back-drop {
-  background-color: rgba(48, 49, 48, 0.42);
-  height: 100%;
-  position: fixed;
-  transition: all 1.3s;
-  width: 100%;
-}
-
-.open-modal-btn {
-  margin: 15px;
-  padding: 10px;
-  font-weight: bold;
-}

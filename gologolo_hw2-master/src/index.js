@@ -7,5 +7,6 @@ import 'materialize-css/dist/css/materialize.min.css'
 // START BY CHECKING TO SEE IF OUR LOGOS
 // ARE IN LOCAL STORAGE. IF THEY ARE NOT,
 // THEN LOAD THEM FROM THE JSON FILE AND
-// PUT THEM THERE
+// PUT THEM THERE   
+
 ReactDOM.render(<App />, document.getElementById('root'));
